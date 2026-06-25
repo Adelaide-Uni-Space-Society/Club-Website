@@ -25,7 +25,7 @@ export default function EventsPage() {
           </h1>
         </div>
 
-        <EventsClient upcoming={upcoming} past={past} tags={tags} />
+        <EventsClient upcoming={upcoming} past={past} />
       </div>
     </div>
   )

@@ -7,9 +7,9 @@ export default function SuccessPage() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h1 className="text-3xl font-bold text-white mb-3">You're in! 🚀</h1>
+        <h1 className="text-3xl font-bold text-white mb-3">Success!</h1>
         <p className="text-white/50 leading-relaxed">
-          Your ticket is confirmed. Check your email for a confirmation — see you there!
+          Your ticket is confirmed. Check your email for a confirmation.
         </p>
       </div>
     </div>

@@ -15,7 +15,7 @@ const iconMap: Record<string, IconType> = {
   Linktree:  SiLinktree,
 }
 
-const words = ["Follow us", "Join the mission", "Stay connected", "We're out there"]
+const words = ["Lorem ipsum", "Lorem ipsum", "Lorem ipsum", "Lorem ipsum"]
 
 export default function Marquee() {
   const track = [...words, ...words, ...words, ...words]
@@ -23,10 +23,9 @@ export default function Marquee() {
   return (
     <div className="relative overflow-hidden bg-space-dark">
 
-      {/* Wave top */}
       <svg
         viewBox="0 0 1440 80"
-        className="w-full block"
+        className="w-full block h-10 sm:h-20"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
@@ -36,10 +35,8 @@ export default function Marquee() {
         />
       </svg>
 
-      {/* Main body */}
-      <div className="bg-space-navy py-16">
+      <div className="bg-space-navy py-12 sm:py-16">
 
-        {/* Stars */}
         {[
           { top: "15%", left: "8%",  size: 2, opacity: 0.6 },
           { top: "70%", left: "15%", size: 1, opacity: 0.4 },
@@ -53,7 +50,7 @@ export default function Marquee() {
         ].map((star, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-white pointer-events-none"
+            className="absolute rounded-xs bg-white pointer-events-none"
             style={{
               top: star.top,
               left: star.left,
@@ -64,23 +61,21 @@ export default function Marquee() {
           />
         ))}
 
-        {/* Scrolling text row */}
-        <div className="overflow-hidden mb-10">
+        <div className="overflow-hidden mb-8 sm:mb-10">
           <div className="flex whitespace-nowrap animate-marquee">
             {track.map((text, i) => (
               <span
                 key={i}
-                className="flex-shrink-0 mx-8 text-white/20 font-bold text-4xl md:text-5xl uppercase tracking-widest select-none"
+                className="flex-shrink-0 mx-4 sm:mx-8 text-white/20 font-bold text-2xl sm:text-4xl md:text-5xl uppercase tracking-widest select-none"
               >
                 {text}
-                <span className="text-space-blue mx-8">✦</span>
+                <span className="text-space-blue mx-4 sm:mx-8">✦</span>
               </span>
             ))}
           </div>
         </div>
 
-        {/* Social icons row */}
-        <div className="flex items-center justify-center gap-6 md:gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 px-4 max-w-xl mx-auto">
           {socials.map(({ label, href }) => {
             const Icon = iconMap[label]
             if (!Icon) return null
@@ -91,12 +86,12 @@ export default function Marquee() {
                 aria-label={label}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="flex flex-col items-center gap-2 text-white/30 hover:text-space-blue transition-colors group"
+                className="flex flex-col items-center gap-2 text-white/30 hover:text-space-blue transition-colors group min-h-[44px]"
               >
-                <div className="w-12 h-12 rounded-full border border-white/10 group-hover:border-space-blue/50 flex items-center justify-center transition-colors">
-                  <Icon size={20} />
+                <div className="w-11 h-11 rounded-xs border border-white/10 group-hover:border-space-blue/50 flex items-center justify-center transition-colors">
+                  <Icon size={18} />
                 </div>
-                <span className="text-xs tracking-widest uppercase">{label}</span>
+                <span className="text-[10px] tracking-widest uppercase">{label}</span>
               </a>
             )
           })}
@@ -104,10 +99,9 @@ export default function Marquee() {
 
       </div>
 
-      {/* Wave bottom */}
       <svg
         viewBox="0 0 1440 80"
-        className="w-full block"
+        className="w-full block h-10 sm:h-20"
         preserveAspectRatio="none"
         aria-hidden="true"
       >

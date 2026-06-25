@@ -52,6 +52,7 @@ export async function POST(req: Request) {
       metadata: { name, quantity: String(quantity) }, 
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/tickets`,
+      allow_promotion_codes: true,
     });
 
     return NextResponse.json({ url: session.url });

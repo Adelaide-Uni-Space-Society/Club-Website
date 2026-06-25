@@ -13,22 +13,22 @@ export default function Events() {
   const events = getUpcomingEvents(3)
 
   return (
-    <section className="bg-space-dark py-24 px-6">
+    <section className="bg-space-dark py-16 sm:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between mb-12">
+        <div className="flex items-end justify-between mb-10 sm:mb-12">
           <div>
             <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-2">
-              What's on
+              Lorem Ipsum
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Upcoming events
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+              Lorem ipsum
             </h2>
           </div>
           <Link
             href="/events"
-            className="text-sm text-white/50 hover:text-white transition-colors hidden md:block"
+            className="text-sm text-white/50 hover:text-white transition-colors hidden sm:block min-h-[44px] flex items-center"
           >
-            View all →
+            Lorem ipsum →
           </Link>
         </div>
 
@@ -36,16 +36,16 @@ export default function Events() {
           {events.map((event) => (
             <div
               key={event.id}
-              className="bg-space-navy rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors group"
+              className="bg-space-navy rounded-xs overflow-hidden border border-white/5 hover:border-white/20 transition-colors group"
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-video overflow-hidden relative">
                 <img
                   src={event.imageUrl}
                   alt={event.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 <p className="text-space-blue text-xs font-semibold tracking-widest uppercase mb-2">
                   {formatDate(event.date)}
                 </p>
@@ -61,9 +61,9 @@ export default function Events() {
           ))}
         </div>
 
-        <div className="mt-8 md:hidden text-center">
-          <Link href="/events" className="text-sm text-white/50 hover:text-white transition-colors">
-            View all events →
+        <div className="mt-10 sm:hidden text-center">
+          <Link href="/events" className="text-sm text-white/50 hover:text-white transition-colors inline-block min-h-[44px] py-2">
+            Lorem ipsum →
           </Link>
         </div>
       </div>

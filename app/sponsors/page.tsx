@@ -1,5 +1,4 @@
 import { getSponsorsGrouped, TIER_ORDER } from "@/lib/data/sponsors"
-import type { Sponsor } from "@/lib/types/sponsor"
 import SponsorTier from "@/components/sponsors/SponsorTier"
 
 export const metadata = {
@@ -9,8 +8,8 @@ export const metadata = {
 
 const tierConfig = {
   gold: {
-    label: "Gold",
-    description: "Our principal partners — without whom none of this would be possible.",
+    label: "Lorem",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     logoHeight: "h-16",
     gridCols: "grid-cols-1 md:grid-cols-3",
     cardPadding: "p-10",
@@ -18,8 +17,8 @@ const tierConfig = {
     dot: "bg-yellow-400",
   },
   silver: {
-    label: "Silver",
-    description: "Major supporters powering our projects and events.",
+    label: "Lorem",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     logoHeight: "h-10",
     gridCols: "grid-cols-2 md:grid-cols-4",
     cardPadding: "p-7",
@@ -27,10 +26,10 @@ const tierConfig = {
     dot: "bg-slate-300",
   },
   bronze: {
-    label: "Bronze",
-    description: "Valued partners contributing to our community.",
+    label: "Lorem",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     logoHeight: "h-8",
-    gridCols: "grid-cols-3 md:grid-cols-5",
+    gridCols: "grid-cols-2 sm:grid-cols-3 md:grid-cols-5", // Optimized to grid-cols-2 on small phones for readability
     cardPadding: "p-5",
     accent: "from-orange-700/10 to-transparent border-orange-700/20",
     dot: "bg-orange-700",
@@ -41,47 +40,46 @@ export default function SponsorsPage() {
   const grouped = getSponsorsGrouped()
 
   return (
-    <div className="min-h-screen bg-space-dark pt-24 pb-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="min-h-screen bg-space-dark py-16 sm:py-24 w-full">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-10 sm:mb-12">
           <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-3">
-            Partners & supporters
+            Lorem Ipsum
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our sponsors
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            Lorem ipsum
           </h1>
-          <p className="text-white/50 max-w-xl leading-relaxed">
-            These organisations share our passion for space and support
-            the Adelaide Space Society through funding, resources, and expertise.
+          <p className="text-white/50 max-w-xl leading-relaxed text-sm sm:text-base">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus.
           </p>
         </div>
 
-        {/* Become a sponsor CTA */}
-        <div className="mb-20 mt-10 rounded-2xl border border-white/10 bg-space-navy px-8 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        {/* Become a sponsor CTA - Optimized to flex-col on mobile */}
+        <div className="mb-16 sm:mb-20 mt-8 sm:mt-10 rounded-xs border border-white/10 bg-space-navy px-6 sm:px-8 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 w-full">
           <div>
-            <p className="text-white font-semibold mb-1">Interested in sponsoring us?</p>
+            <p className="text-white font-semibold mb-1">Lorem ipsum dolor sit amet?</p>
             <p className="text-white/40 text-sm">
-              We offer a range of partnership packages to suit organisations of all sizes.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
           <a
             href="mailto:hello@adelaidespacesociety.com"
-            className="flex-shrink-0 px-6 py-2.5 rounded-full bg-space-blue text-white text-sm font-semibold hover:bg-space-blue/80 transition-colors"
+            className="w-full md:w-auto flex-shrink-0 px-6 py-3.5 rounded-xs bg-space-blue text-white text-sm font-semibold hover:bg-space-blue/80 transition-colors text-center min-h-[44px] flex items-center justify-center whitespace-nowrap"
           >
-            Get in touch:
+            Lorem ipsum
           </a>
         </div>
 
-        {/* Tiers */}
-        <div className="space-y-20">
+        {/* Tiers Matrix */}
+        <div className="space-y-16 sm:space-y-20 w-full">
           {TIER_ORDER.map((tier) => {
             const sponsors = grouped[tier]
             if (!sponsors.length) return null
             return (
               <SponsorTier
-                key={tier}
+                key={tier} // CHANGED: Using 'tier' ensures the key is uniquely "gold", "silver", or "bronze"
                 tier={tier}
                 sponsors={sponsors}
                 config={tierConfig[tier]}

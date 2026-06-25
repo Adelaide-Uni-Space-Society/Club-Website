@@ -27,7 +27,7 @@ const referralOptions = [
 
 const years = ["1", "2", "3", "4", "5+", "Postgraduate", "PhD"]
 
-const inputClass = "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-space-blue transition-colors"
+const inputClass = "w-full px-4 py-3 rounded-xs bg-white/5 border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-space-blue transition-colors"
 const labelClass = "block text-white/60 text-xs font-medium mb-1.5 uppercase tracking-wide"
 
 const empty: MemberFormData = {
@@ -82,8 +82,8 @@ export default function JoinForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-space-blue/20 bg-space-navy p-10 text-center">
-        <div className="w-14 h-14 rounded-full bg-space-blue/10 flex items-center justify-center mx-auto mb-5">
+      <div className="rounded-xs border border-space-blue/20 bg-space-navy p-10 text-center">
+        <div className="w-14 h-14 rounded-xs bg-space-blue/10 flex items-center justify-center mx-auto mb-5">
           <svg className="w-7 h-7 text-space-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
@@ -98,7 +98,7 @@ export default function JoinForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-white/5 bg-space-navy p-8">
+    <div className="rounded-xs border border-white/5 bg-space-navy p-8">
       <form onSubmit={handleSubmit} className="space-y-5">
 
         {/* Name + Email */}
@@ -228,7 +228,7 @@ export default function JoinForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full py-3 rounded-full bg-space-blue text-white font-semibold text-sm hover:bg-space-blue/80 transition-colors disabled:opacity-50"
+          className="w-full py-3 rounded-xs bg-space-blue text-white font-semibold text-sm hover:bg-space-blue/80 transition-colors disabled:opacity-50"
         >
           {status === "loading" ? "Submitting..." : "Join the society"}
         </button>

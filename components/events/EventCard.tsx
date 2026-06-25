@@ -11,16 +11,16 @@ function formatDate(dateStr: string) {
 export default function EventCard({ event, past = false }: { event: Event; past?: boolean }) {
   return (
     <div
-      className={`rounded-2xl overflow-hidden border transition-colors group ${
+      className={`rounded-xs overflow-hidden border transition-colors group w-full ${
         past
           ? "border-white/5 opacity-60 hover:opacity-80"
           : "border-white/5 hover:border-white/20"
       }`}
     >
-      <div className="aspect-video overflow-hidden bg-space-navy">
+      <div className="aspect-video overflow-hidden bg-space-navy relative">
         <img
           src={event.imageUrl}
-          alt={event.title}
+          alt="Lorem ipsum"
           className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
             past ? "grayscale" : ""
           }`}
@@ -31,9 +31,9 @@ export default function EventCard({ event, past = false }: { event: Event; past?
           {event.tags?.map((tag : any) => (
             <span
               key={tag}
-              className="px-2 py-0.5 rounded-full bg-white/5 text-white/40 text-xs capitalize"
+              className="px-2 py-1 border border-white/10 rounded-xs bg-white/5 text-white/40 text-xs capitalize min-h-[28px] flex items-center"
             >
-              {tag}
+              Lorem ipsum
             </span>
           ))}
         </div>
@@ -41,12 +41,12 @@ export default function EventCard({ event, past = false }: { event: Event; past?
           {formatDate(event.date)}
         </p>
         <h3 className="text-white font-bold text-base leading-snug mb-2">
-          {event.title}
+          Lorem ipsum
         </h3>
         <p className="text-white/40 text-sm leading-relaxed mb-3">
-          {event.description}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
-        <p className="text-white/20 text-xs">{event.location}</p>
+        <p className="text-white/20 text-xs">Lorem ipsum</p>
       </div>
     </div>
   )

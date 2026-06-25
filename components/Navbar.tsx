@@ -35,13 +35,13 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-space-dark/80 backdrop-blur-sm border-b border-white/10">
-      <div className="max-w-6xl mx-auto px-10 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 h-16 flex items-center justify-between">
 
         <Link href="/" className="flex-shrink-0">
           <img
-            src="https://logoipsum.com/artwork/329"
+            src="/high-def-light-background.svg"
             alt="Society logo"
-            className="h-9 w-auto"
+            className="h-8 sm:h-9 w-auto"
           />
         </Link>
 
@@ -52,7 +52,7 @@ export default function Navbar() {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setAboutOpen((o) => !o)}
-              className={`flex items-center gap-1 text-sm transition-colors ${
+              className={`flex items-center gap-1 text-sm transition-colors min-h-[44px] ${
                 isAboutActive ? "text-white" : "text-white/60 hover:text-white"
               }`}
             >
@@ -69,7 +69,7 @@ export default function Navbar() {
             </button>
 
             {aboutOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 rounded-xl border border-white/10 bg-space-navy/95 backdrop-blur-sm overflow-hidden shadow-xl">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 rounded-xs border border-white/10 bg-space-navy/95 backdrop-blur-sm overflow-hidden shadow-xl">
                 <div className="py-1">
                   {aboutLinks.map(({ label, href }) => (
                     <Link
@@ -90,20 +90,23 @@ export default function Navbar() {
           <Link href="/events" className={`text-sm transition-colors ${pathname === "/events" ? "text-white" : "text-white/60 hover:text-white"}`}>
             Events
           </Link>
+          <Link href="/tickets" className={`text-sm transition-colors ${pathname === "/tickets" ? "text-white" : "text-white/60 hover:text-white"}`}>
+            Tickets
+          </Link>
           <Link href="/sponsors" className={`text-sm transition-colors ${pathname === "/sponsors" ? "text-white" : "text-white/60 hover:text-white"}`}>
             Sponsors
           </Link>
           <Link
             href="/join"
-            className="ml-2 px-4 py-2 rounded-full bg-space-blue text-white text-sm font-semibold hover:bg-space-blue/80 transition-colors"
+            className="ml-2 px-4 py-2 rounded-xs bg-space-blue text-white text-sm font-semibold hover:bg-space-blue/80 transition-colors whitespace-nowrap"
           >
             Join us
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger - Enhanced touch boundaries */}
         <button
-          className="md:hidden text-white/60 hover:text-white"
+          className="md:hidden text-white/60 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-end"
           onClick={() => setMobileOpen((o) => !o)}
           aria-label="Toggle menu"
         >
@@ -118,24 +121,25 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-white/10 bg-space-dark/95 backdrop-blur-sm">
-          <div className="max-w-6xl mx-auto px-10 py-4 flex flex-col gap-1">
+        <div className="md:hidden border-t border-white/10 bg-space-dark/95 backdrop-blur-sm max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="px-4 sm:px-6 py-4 flex flex-col gap-1">
             <p className="text-white/20 text-xs tracking-widest uppercase py-2">About</p>
             {aboutLinks.map(({ label, href }) => (
               <Link
                 key={href}
                 href={href}
-                className="text-white/60 hover:text-white text-sm py-2 transition-colors pl-2"
+                className="text-white/60 hover:text-white text-sm py-2.5 transition-colors pl-2 min-h-[44px] flex items-center"
               >
                 {label}
               </Link>
             ))}
             <div className="border-t border-white/5 my-2" />
-            <Link href="/events"  className="text-white/60 hover:text-white text-sm py-2 transition-colors">Events</Link>
-            <Link href="/sponsors" className="text-white/60 hover:text-white text-sm py-2 transition-colors">Sponsors</Link>
+            <Link href="/events" className="text-white/60 hover:text-white text-sm py-2.5 transition-colors min-h-[44px] flex items-center">Events</Link>
+            <Link href="/tickets" className="text-white/60 hover:text-white text-sm py-2.5 transition-colors min-h-[44px] flex items-center">Tickets</Link>
+            <Link href="/sponsors" className="text-white/60 hover:text-white text-sm py-2.5 transition-colors min-h-[44px] flex items-center">Sponsors</Link>
             <Link
               href="/join"
-              className="mt-2 px-4 py-2.5 rounded-full bg-space-blue text-white text-sm font-semibold text-center hover:bg-space-blue/80 transition-colors"
+              className="mt-4 px-4 py-3 rounded-xs bg-space-blue text-white text-sm font-semibold text-center hover:bg-space-blue/80 transition-colors min-h-[44px] flex items-center justify-center"
             >
               Join us
             </Link>
