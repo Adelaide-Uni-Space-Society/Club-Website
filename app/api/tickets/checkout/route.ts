@@ -56,7 +56,17 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ url: session.url });
 
-  } catch (err) {
-    return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+  } catch (error: any) {
+    console.error("--- THE ACTUAL CRASH REASON ---", error);
+
+    // Temporary: Return a more detailed error response for debugging purposes
+    return NextResponse.json(
+      { 
+        error: "Internal Server Error", 
+        message: error?.message || "Unknown error context",
+        stack: error?.stack 
+      },
+      { status: 500 }
+    );
   }
 }
