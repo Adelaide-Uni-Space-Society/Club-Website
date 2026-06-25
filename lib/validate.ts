@@ -1,6 +1,15 @@
 export function sanitiseString(value: unknown): string {
   if (typeof value !== "string") return ""
-  return value.trim().slice(0, 500)
+  
+  const trimmed = value.trim().slice(0, 500)
+  
+  return trimmed
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;")
+    .replace(/\//g, "&#x2F;")
 }
 
 export function sanitiseEmail(value: unknown): string {
