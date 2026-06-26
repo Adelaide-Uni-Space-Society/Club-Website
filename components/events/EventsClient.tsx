@@ -20,7 +20,7 @@ export default function EventsClient({ upcoming, past }: Omit<Props, "tags">) {
       {upcoming.length > 0 ? (
         <section className="mb-16 sm:mb-20 w-full">
           <h2 className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-6 sm:mb-8">
-            Lorem ipsum
+            Upcoming Events
           </h2>
           {featured && <FeaturedEvent event={featured} />}
           {rest.length > 0 && (
@@ -32,14 +32,14 @@ export default function EventsClient({ upcoming, past }: Omit<Props, "tags">) {
           )}
         </section>
       ) : (
-        <p className="text-white/30 text-sm mb-16 sm:mb-20">Lorem ipsum dolor sit amet.</p>
+        <p className="text-white/30 text-sm mb-16 sm:mb-20">No upcoming events at this time.</p>
       )}
 
       {/* Past Section Container */}
       {past.length > 0 && (
         <section className="w-full">
           <h2 className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-6 sm:mb-8">
-            Lorem ipsum
+            Past Events
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
             {past.map((event) => (

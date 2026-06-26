@@ -4,14 +4,12 @@ import { useState } from "react"
 import type { MemberFormData } from "@/lib/types/member"
 
 const faculties = [
-  "Engineering, Computer & Mathematical Sciences",
-  "Sciences",
-  "Arts",
-  "Business",
-  "Health & Medical Sciences",
-  "Law",
-  "Architecture & Landscape Architecture",
-  "Education",
+  "Business and Law",
+  "Creative Arts, Design and Humanities",
+  "Education, Behavioural and Social Sciences",
+  "Engineering and Information Technology",
+  "Health and Medical Sciences",
+  "Science",
   "Other",
 ]
 
@@ -25,7 +23,7 @@ const referralOptions = [
   "Other",
 ]
 
-const years = ["1", "2", "3", "4", "5+", "Postgraduate", "PhD"]
+const years = ["1", "2", "3", "4", "5+", "Postgraduate", "PhD", "Non-student"]
 
 const inputClass = "w-full px-4 py-3 rounded-xs bg-white/5 border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-space-blue transition-colors"
 const labelClass = "block text-white/60 text-xs font-medium mb-1.5 uppercase tracking-wide"
@@ -88,10 +86,10 @@ export default function JoinForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-white font-bold text-xl mb-2">Welcome aboard! 🚀</h3>
+        <h3 className="text-white font-bold text-xl mb-2">Welcome aboard!</h3>
         <p className="text-white/50 text-sm leading-relaxed">
           You're now a member of the Adelaide Space Society. Keep an eye on
-          your inbox — we'll be in touch with next steps.
+          your inbox for updates.
         </p>
       </div>
     )

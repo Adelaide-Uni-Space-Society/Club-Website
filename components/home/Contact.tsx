@@ -25,14 +25,11 @@ export default function Contact() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10 sm:text-center sm:mb-12">
           <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-2">
-            Lorem Ipsum
+            Contact Us
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-            Lorem ipsum
+            UNDER CONSTRUCTION
           </h2>
-          <p className="text-white/50 text-sm sm:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
         </div>
 
         {status === "success" ? (
@@ -43,7 +40,7 @@ export default function Contact() {
               onClick={() => setStatus("idle")}
               className="mt-6 text-sm text-white/30 hover:text-white transition-colors min-h-[44px] px-4"
             >
-              Lorem ipsum
+              Send another message
             </button>
           </div>
         ) : (
@@ -53,7 +50,7 @@ export default function Contact() {
                 name="name"
                 type="text"
                 required
-                placeholder="Lorem ipsum"
+                placeholder="UNDER CONSTRUCTION"
                 value={form.name}
                 onChange={handleChange}
                 className={inputClass}
@@ -62,7 +59,7 @@ export default function Contact() {
                 name="email"
                 type="email"
                 required
-                placeholder="your@email.com"
+                placeholder="UNDER CONSTRUCTION"
                 value={form.email}
                 onChange={handleChange}
                 className={inputClass}
@@ -72,7 +69,7 @@ export default function Contact() {
               name="message"
               required
               rows={6}
-              placeholder="Lorem ipsum..."
+              placeholder="UNDER CONSTRUCTION..."
               value={form.message}
               onChange={handleChange}
               className={inputClass + " resize-none"}
@@ -82,7 +79,7 @@ export default function Contact() {
               disabled={status === "loading"}
               className="w-full py-4 rounded-xs bg-space-blue text-white font-semibold text-sm hover:bg-space-blue/80 transition-colors disabled:opacity-50 min-h-[44px] flex items-center justify-center"
             >
-              {status === "loading" ? "..." : "Lorem ipsum"}
+              {status === "loading" ? "..." : "UNDER CONSTRUCTION"}
             </button>
           </form>
         )}

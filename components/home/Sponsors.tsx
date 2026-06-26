@@ -1,73 +1,114 @@
 import { getSponsorsByTier } from "@/lib/data/sponsors"
 
-function SponsorLogo({ name, logoUrl, websiteUrl }: {
+function SponsorLogo({ name, logoUrl, websiteUrl, tierSize }: {
   name: string
   logoUrl: string
   websiteUrl: string
+  tierSize: string
 }) {
   return (
     <a
       href={websiteUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-center p-5 sm:p-6 rounded-xs border border-white/5 hover:border-white/20 transition-colors opacity-60 hover:opacity-100 min-h-[60px] w-full"
+      className="flex items-center justify-center w-full sm:max-w-[320px] transition-all duration-300 hover:scale-[1.03] group"
     >
-      <img src={logoUrl} alt={name} className="h-8 sm:h-10 w-auto filter invert object-contain" />
+      {/* Identical Frosted Glass implementation to keep the UI uniform across both views */}
+      <div className="flex items-center justify-center p-6 rounded-xs bg-white/10 backdrop-blur-md border border-white/10 group-hover:border-white/20 w-full min-h-[120px] sm:min-h-[140px] shadow-xl shadow-black/30 transition-colors">
+        <img 
+          src={logoUrl} 
+          alt={name} 
+          className={`${tierSize} w-auto object-contain max-w-[85%] max-h-[80px]`} 
+        />
+      </div>
     </a>
   )
 }
 
 export default function Sponsors() {
-  const gold     = getSponsorsByTier("gold")
-  const silver   = getSponsorsByTier("silver")
-  const bronze   = getSponsorsByTier("bronze")
+  const galaxy    = getSponsorsByTier("galaxy")
+  const supernova = getSponsorsByTier("supernova")
+  const milkyWay  = getSponsorsByTier("milky way")
+  const nebula    = getSponsorsByTier("nebula")
+  const eclipse   = getSponsorsByTier("eclipse")
 
   return (
     <section className="bg-space-dark py-16 sm:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-16 sm:mb-20">
           <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-2">
-            Lorem Ipsum
+            Our Supporters
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-            Lorem ipsum
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">
+            Sponsors
           </h2>
         </div>
 
-        {gold.length > 0 && (
-          <div className="mb-10 w-full">
-            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-4 sm:mb-6">
-              Lorem
+        {/* Galaxy */}
+        {galaxy.length > 0 && (
+          <div className="mb-14 sm:mb-16 w-full">
+            <p className="text-purple-400 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6 font-bold">
+              Galaxy
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 max-w-md mx-auto gap-4">
-              {gold.map((s) => (
-                <SponsorLogo key={s.id} {...s} />
+            <div className="flex flex-wrap items-center justify-center gap-4 max-w-4xl mx-auto">
+              {galaxy.map((s) => (
+                <SponsorLogo key={s.id} {...s} tierSize="h-16 sm:h-20" />
               ))}
             </div>
           </div>
         )}
 
-        {silver.length > 0 && (
-          <div className="mb-10 w-full">
-            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-4 sm:mb-6">
-              Lorem
+        {/* Supernova */}
+        {supernova.length > 0 && (
+          <div className="mb-14 sm:mb-16 w-full">
+            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+              Supernova
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto w-full">
-              {silver.map((s) => (
-                <SponsorLogo key={s.id} {...s} />
+            <div className="flex flex-wrap items-center justify-center gap-4 max-w-4xl mx-auto">
+              {supernova.map((s) => (
+                <SponsorLogo key={s.id} {...s} tierSize="h-12 sm:h-16" />
               ))}
             </div>
           </div>
         )}
 
-        {bronze.length > 0 && (
+        {/* Milky Way */}
+        {milkyWay.length > 0 && (
+          <div className="mb-14 sm:mb-16 w-full">
+            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+              Milky Way
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4 max-w-5xl mx-auto w-full">
+              {milkyWay.map((s) => (
+                <SponsorLogo key={s.id} {...s} tierSize="h-10 sm:h-12" />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Nebula */}
+        {nebula.length > 0 && (
+          <div className="mb-14 sm:mb-16 w-full">
+            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+              Nebula
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4 w-full">
+              {nebula.map((s) => (
+                <SponsorLogo key={s.id} {...s} tierSize="h-8 sm:h-10" />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Eclipse */}
+        {eclipse.length > 0 && (
           <div className="w-full">
-            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-4 sm:mb-6">
-              Lorem
+            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+              Eclipse
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 w-full">
-              {bronze.map((s) => (
-                <SponsorLogo key={s.id} {...s} />
+            <div className="flex flex-wrap items-center justify-center gap-4 w-full">
+              {eclipse.map((s) => (
+                <SponsorLogo key={s.id} {...s} tierSize="h-7 sm:h-8" />
               ))}
             </div>
           </div>

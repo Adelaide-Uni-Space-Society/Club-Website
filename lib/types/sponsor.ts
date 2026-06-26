@@ -3,5 +3,5 @@ export type Sponsor = {
   name: string
   logoUrl: string
   websiteUrl: string
-  tier: "gold" | "silver" | "bronze"
+  tier: "galaxy" | "supernova" | "milky way" | "nebula" | "eclipse"
 }

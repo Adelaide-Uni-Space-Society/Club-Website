@@ -51,19 +51,20 @@ export default function Hero() {
         <div className="flex items-center gap-3 mb-4">
           <span className="h-[2px] w-6 bg-amber-400" />
           <p className="text-amber-400 text-xs font-bold tracking-[0.2em] uppercase">
-            Lorem Ipsum
+            Creating Community | 
+            Collaborating with Industry
           </p>
         </div>
 
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight max-w-3xl">
-          Lorem ipsum{" "}
+          Adelaide University{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-fuchsia-500">
-            dolor sit amet
+            Space Society
           </span>
         </h1>
 
         <p className="mt-6 text-base sm:text-lg text-slate-200 max-w-xl font-normal leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus. Nulla rhoncus feugiat eros quis consectetur.
+          Adelaide University Space Society is a student-run community of passionate people interested in space.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">

@@ -18,17 +18,17 @@ export default function Events() {
         <div className="flex items-end justify-between mb-10 sm:mb-12">
           <div>
             <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-2">
-              Lorem Ipsum
+              Our Events
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              Lorem ipsum
+              Upcoming Events
             </h2>
           </div>
           <Link
             href="/events"
             className="text-sm text-white/50 hover:text-white transition-colors hidden sm:block min-h-[44px] flex items-center"
           >
-            Lorem ipsum →
+            View all events →
           </Link>
         </div>
 
@@ -62,8 +62,8 @@ export default function Events() {
         </div>
 
         <div className="mt-10 sm:hidden text-center">
-          <Link href="/events" className="text-sm text-white/50 hover:text-white transition-colors inline-block min-h-[44px] py-2">
-            Lorem ipsum →
+          <Link href="/events" className="text-sm text-white/50 hover:text-white transition-colors inline-block min-h-[44px] py-2">   
+            View all events →
           </Link>
         </div>
       </div>

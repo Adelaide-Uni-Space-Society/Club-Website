@@ -5,11 +5,11 @@ export const events: Event[] = [
   {
     id: "1",
     title: "Galaxy Ball 2026",
-    description: "THE event of the year. Do not miss it.",
+    description: "SAVE THE DATE!! - September 5th. Join us for our annual Galaxy Ball, a fantastic night to remember. Get ready to chanel your inner astronaut and explore the possibilities, with old friends and new faces. Be prepared for a night dancing among the stars, dreaming beyond the clouds",
     date: "2026-07-15",
-    location: "Engineering Building, Room 204",
-    imageUrl: "https://picsum.photos/seed/cubesat/800/500",
-    tags: ["talk", "satellites"],
+    location: "To be revealed on Friday (little hint, it's a conservatory hehe)",
+    imageUrl: "/events/GalaxyBall.jpg",
+    tags: ["ball", "social", "formal"],
   },
 ]
 

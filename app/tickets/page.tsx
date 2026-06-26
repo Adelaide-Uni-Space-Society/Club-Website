@@ -5,7 +5,6 @@ import { useState } from "react"
 export default function TicketsPage() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [quantity, setQuantity] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
@@ -14,34 +13,35 @@ export default function TicketsPage() {
     setError("")
 
     try {
-        const res = await fetch("/api/tickets/checkout", {
+      const res = await fetch("/api/tickets/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, quantity }),
-        })
+        // Hardcoded quantity to 1 since it's the strict maximum
+        body: JSON.stringify({ name, email, quantity: 1 }),
+      })
 
-        const data = await res.json()
-        console.log("Response status:", res.status)
-        console.log("Response data:", data)
+      const data = await res.json()
+      console.log("Response status:", res.status)
+      console.log("Response data:", data)
 
-        if (!res.ok) {
+      if (!res.ok) {
         setError(data.error ?? "Something went wrong.")
         setLoading(false)
         return
-        }
+      }
 
-        if (!data.url) {
+      if (!data.url) {
         setError("No checkout URL returned.")
         setLoading(false)
         return
-        }
+      }
 
-        window.location.href = data.url
+      window.location.href = data.url
 
     } catch (err) {
-        console.error("Fetch error:", err)
-        setError("Network error. Please try again.")
-        setLoading(false)
+      console.error("Fetch error:", err)
+      setError("Network error. Please try again.")
+      setLoading(false)
     }
   }
 
@@ -51,7 +51,7 @@ export default function TicketsPage() {
     <div className="min-h-screen bg-space-dark pt-24 pb-24">
       <div className="max-w-lg mx-auto px-6">
         <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-3">
-          Get your tickets
+          Get your ticket
         </p>
         <h1 className="text-4xl font-bold text-white mb-8">Galaxy Ball 2026</h1>
 
@@ -71,26 +71,10 @@ export default function TicketsPage() {
             className={inputClass}
           />
           
-          {/* Modified Quantity Block Container Row */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-            <div className="flex items-center gap-4">
-              <span className="text-white/50 text-sm">Quantity</span>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-8 h-8 rounded-xs border border-white/10 text-white hover:border-white/30 transition-colors flex items-center justify-center min-h-[32px]"
-                >−</button>
-                <span className="text-white font-bold w-4 text-center">{quantity}</span>
-                <button
-                  onClick={() => setQuantity(Math.min(3, quantity + 1))}
-                  className="w-8 h-8 rounded-xs border border-white/10 text-white hover:border-white/30 transition-colors flex items-center justify-center min-h-[32px]"
-                >+</button>
-              </div>
-            </div>
-            
-            {/* NEW: Explicit inline warning tag design to flag quantity thresholds */}
-            <p className="text-[11px] font-mono text-white/30 tracking-wide uppercase sm:text-right">
-              Maximum 3 tickets per person
+          {/* Subtle subtext to indicate the single-ticket policy */}
+          <div className="pt-1 text-right">
+            <p className="text-[11px] font-mono text-white/30 tracking-wide uppercase">
+              Limit 1 ticket per person
             </p>
           </div>
 
@@ -101,7 +85,7 @@ export default function TicketsPage() {
             disabled={loading || !name || !email}
             className="w-full py-3 mt-2 rounded-xs bg-space-blue text-white font-semibold text-sm hover:bg-space-blue/80 transition-colors disabled:opacity-50 min-h-[44px]"
           >
-            {loading ? "Redirecting..." : "Buy tickets"}
+            {loading ? "Redirecting..." : "Buy ticket"}
           </button>
         </div>
       </div>

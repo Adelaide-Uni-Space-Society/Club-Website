@@ -20,20 +20,23 @@ export default function WhoWeArePage() {
           {/* Left — text */}
           <div>
             <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-4">
-              Lorem ipsum dolor sit amet
+              Who we are
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
-              Lorem ipsum
+              Adelaide University{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-fuchsia-500">
+                Space Society
+              </span>
             </h1>
             <div className="space-y-5 text-white/60 leading-relaxed">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus. Nulla rhoncus feugiat eros quis consectetur.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus. Nulla rhoncus feugiat eros quis consectetur.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus. Nulla rhoncus feugiat eros quis consectetur.
+                Based at the University of Adelaide in South Australia, we are a student-run not-for-profit space society. Our objectives are to create an inclusive community for everyone who is interested in space while connecting students with the space industry and professionals. 
+
+We aim to provide high-calibre events such as the Space and Innovation Hackathon, Galaxy Ball, Industry Night, Conspiracy Night, Your Place in Space Panels, and many more!
+
+The AUSS has grown significantly since its founding in 2017 and continues to grow consistently from year to year. In 2024, we were able to set new records across the board and expect to grow even further in 2025.
+
+We aim to empower the brightest and most passionate students to find their place in the up-and-coming space sector, to become the space leaders of tomorrow.
               </p>
             </div>
             

@@ -20,7 +20,7 @@ export default function EventCard({ event, past = false }: { event: Event; past?
       <div className="aspect-video overflow-hidden bg-space-navy relative">
         <img
           src={event.imageUrl}
-          alt="Lorem ipsum"
+          alt={event.title}
           className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
             past ? "grayscale" : ""
           }`}
@@ -28,12 +28,14 @@ export default function EventCard({ event, past = false }: { event: Event; past?
       </div>
       <div className="p-5 bg-space-navy">
         <div className="flex flex-wrap gap-1.5 mb-3">
-          {event.tags?.map((tag : any) => (
+          {/* Updated tag type from 'any' to 'string' */}
+          {event.tags?.map((tag: string) => (
             <span
               key={tag}
               className="px-2 py-1 border border-white/10 rounded-xs bg-white/5 text-white/40 text-xs capitalize min-h-[28px] flex items-center"
             >
-              Lorem ipsum
+              {/* 2. Dynamic Tag Text */}
+              {tag}
             </span>
           ))}
         </div>
@@ -41,12 +43,18 @@ export default function EventCard({ event, past = false }: { event: Event; past?
           {formatDate(event.date)}
         </p>
         <h3 className="text-white font-bold text-base leading-snug mb-2">
-          Lorem ipsum
+          {/* 3. Dynamic Title */}
+          {event.title}
         </h3>
         <p className="text-white/40 text-sm leading-relaxed mb-3">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          {/* 4. Dynamic Description */}
+          {event.description}
         </p>
-        <p className="text-white/20 text-xs">Lorem ipsum</p>
+        
+        {/* 5. Optional Location or Meta Info */}
+        {event.location && (
+          <p className="text-white/20 text-xs">{event.location}</p>
+        )}
       </div>
     </div>
   )

@@ -12,7 +12,7 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: "Adelaide Space Society",
-  description: "Student-run space society exploring the universe together.",
+  description: "Student-run space society at Adelaide University",
 };
 
 export default function RootLayout({

@@ -15,7 +15,7 @@ const iconMap: Record<string, IconType> = {
   Linktree:  SiLinktree,
 }
 
-const words = ["Lorem ipsum", "Lorem ipsum", "Lorem ipsum", "Lorem ipsum"]
+const words = ["FOLLOW US", "FOLLOW US", "FOLLOW US", "FOLLOW US"]
 
 export default function Marquee() {
   const track = [...words, ...words, ...words, ...words]
