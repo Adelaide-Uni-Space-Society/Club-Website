@@ -2,8 +2,11 @@
 
 import { useState } from "react"
 import FeaturedEventCarousel from "@/components/events/FeaturedEventCarousel"
-// FIXED: Adjusted pathing target to point safely to the lib layout folder
 import { events } from "@/lib/data/events" 
+
+// --- CONFIGURATION TOGGLE ---
+// Set this to true to close checkout. Change to false to open sales back up!
+const IS_SOLD_OUT = true
 
 export default function TicketsPage() {
   const [name, setName] = useState("")
@@ -11,10 +14,12 @@ export default function TicketsPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
-  // Pull the event dynamically from your backend data file using its ID
   const featuredEvent = events.find(e => e.id === "1" || e.id === "galaxy-ball-2026")
 
   async function handleCheckout() {
+    // Extra safety barrier in case an element bypasses disabled states
+    if (IS_SOLD_OUT) return
+
     setLoading(true)
     setError("")
 
@@ -48,9 +53,8 @@ export default function TicketsPage() {
     }
   }
 
-  const inputClass = "w-full px-4 py-3 rounded-xs bg-white/5 border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-space-blue transition-colors"
+  const inputClass = "w-full px-4 py-3 rounded-xs bg-white/5 border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-space-blue transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
 
-  // Fail-safe if data file pathing or array lookup misses
   if (!featuredEvent) {
     return (
       <div className="min-h-screen bg-space-dark flex items-center justify-center text-white">
@@ -76,7 +80,10 @@ export default function TicketsPage() {
               <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-2">
                 Get your ticket
               </p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-white">Secure Your Place</h1>
+              {/* Conditional Title messaging */}
+              <h1 className="text-3xl sm:text-4xl font-bold text-white">
+                {IS_SOLD_OUT ? "Tier 1: Sold Out" : "Secure Your Place"}
+              </h1>
             </div>
 
             <div className="rounded-xs border border-white/5 bg-space-navy p-6 sm:p-8 space-y-4 shadow-xl shadow-black/20">
@@ -86,6 +93,7 @@ export default function TicketsPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className={inputClass}
+                disabled={IS_SOLD_OUT} // Disables name entry
               />
               <input
                 type="email"
@@ -93,11 +101,12 @@ export default function TicketsPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={inputClass}
+                disabled={IS_SOLD_OUT} // Disables email entry
               />
               
               <div className="pt-1 text-right">
                 <p className="text-[11px] font-mono text-white/30 tracking-wide uppercase">
-                  Limit 1 ticket per person
+                  {IS_SOLD_OUT ? "Stay tuned for future releases" : "Limit 1 ticket per person"}
                 </p>
               </div>
 
@@ -105,10 +114,11 @@ export default function TicketsPage() {
 
               <button
                 onClick={handleCheckout}
-                disabled={loading || !name || !email}
-                className="w-full py-3 mt-2 rounded-xs bg-space-blue text-white font-semibold text-sm hover:bg-space-blue/80 transition-colors disabled:opacity-50 min-h-[44px]"
+                /* Hard block actions if loading or if sold out flag evaluates true */
+                disabled={IS_SOLD_OUT || loading || !name || !email}
+                className="w-full py-3 mt-2 rounded-xs text-white font-semibold text-sm transition-colors min-h-[44px] disabled:opacity-40 disabled:cursor-not-allowed bg-space-blue hover:bg-space-blue/80"
               >
-                {loading ? "Redirecting..." : "Buy ticket"}
+                {IS_SOLD_OUT ? "SOLD OUT" : loading ? "Redirecting..." : "Buy ticket"}
               </button>
             </div>
           </div>
