@@ -22,7 +22,9 @@ export default function EventsClient({ upcoming, past }: Omit<Props, "tags">) {
           <h2 className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-6 sm:mb-8">
             Upcoming Events
           </h2>
+          {/* REMOVED: isTicketsPage prop entirely so it defaults to single-image mode */}
           {featured && <FeaturedEvent event={featured} />}
+          
           {rest.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 w-full">
               {rest.map((event) => (

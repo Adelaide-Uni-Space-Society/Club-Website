@@ -5,6 +5,7 @@ export type Event = {
     date: string; // ISO format
     location: string;
     imageUrl?: string;
+    imageUrls?: string[];
     registrationLink?: string;
     tags?: string[];
 }

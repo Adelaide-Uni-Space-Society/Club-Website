@@ -5,10 +5,15 @@ export const events: Event[] = [
   {
     id: "1",
     title: "Galaxy Ball 2026",
-    description: "SAVE THE DATE!! - September 5th. Join us for our annual Galaxy Ball, a fantastic night to remember. Get ready to chanel your inner astronaut and explore the possibilities, with old friends and new faces. Be prepared for a night dancing among the stars, dreaming beyond the clouds",
-    date: "2026-07-15",
-    location: "To be revealed on Friday (little hint, it's a conservatory hehe)",
+    description: "This year, Galaxy Ball is living up to its name. Join us in a stunning conservatory under the stars for an unforgettable night full of elegance and magic.\nA limited number of Early Bird tickets are available now, so don’t miss your chance to drink wine and dance under the stars 🌌🪐",
+    date: "2026-09-05",
+    location: "Ayers House, Adelaide",
     imageUrl: "/events/GalaxyBall.jpg",
+    imageUrls: [
+      "/events/GalaxyBallAnnouncement.png",
+      "/events/AyersHouse1.png",
+      "/events/AyersHouse2.png"
+    ],
     tags: ["ball", "social", "formal"],
   },
 ]

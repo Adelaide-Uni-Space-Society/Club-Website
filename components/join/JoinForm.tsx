@@ -107,7 +107,7 @@ export default function JoinForm() {
               name="fullName"
               type="text"
               required
-              placeholder="Jane Smith"
+              placeholder="Firstname Lastname"
               value={form.fullName}
               onChange={handleChange}
               className={inputClass}
