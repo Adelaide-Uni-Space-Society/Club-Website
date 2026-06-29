@@ -5,7 +5,7 @@ import { supabaseServer } from "@/lib/supabase-server";
 import { sanitiseEmail, sanitiseString } from "@/lib/validate";
 import { ratelimit } from "@/lib/ratelimit";
 
-const EVENT_CAP = 29; // Maximum number of tickets total for curr batch (total number of entries in ticket_orders table should not exceed this number)
+const EVENT_CAP = 30; // Maximum number of tickets total for curr batch (total number of entries in ticket_orders table should not exceed this number)
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
