@@ -5,7 +5,7 @@ import { supabaseServer } from "@/lib/supabase-server";
 import { sanitiseEmail, sanitiseString } from "@/lib/validate";
 import { ratelimit } from "@/lib/ratelimit";
 
-const EVENT_CAP = 160; // Maximum number of tickets
+const EVENT_CAP = 29; // Maximum number of tickets total for curr batch (total number of entries in ticket_orders table should not exceed this number)
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     // Block checkout if it exceeds ticket cap
     if (totalSold + quantity > EVENT_CAP) {
-      return NextResponse.json({ error: "Sorry, this event is completely sold out!" }, { status: 400 });
+      return NextResponse.json({ error: "Sorry, this batch of tickets is completely sold out!" }, { status: 409 });
     }
 
     // Create Stripe Session
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error("--- THE ACTUAL CRASH REASON ---", error);
 
-    // Temporary: Return a more detailed error response for debugging purposes
+    // Temp: Return more detailed error response for debugging purposes
     return NextResponse.json(
       { 
         error: "Internal Server Error", 
