@@ -6,7 +6,7 @@ import { events } from "@/lib/data/events"
 
 // --- CONFIGURATION TOGGLE ---
 // Set this to true to close checkout. Change to false to open sales back up!
-const IS_SOLD_OUT = true
+const IS_SOLD_OUT = false
 
 export default function TicketsPage() {
   const [name, setName] = useState("")
@@ -17,7 +17,6 @@ export default function TicketsPage() {
   const featuredEvent = events.find(e => e.id === "1" || e.id === "galaxy-ball-2026")
 
   async function handleCheckout() {
-    // Extra safety barrier in case an element bypasses disabled states
     if (IS_SOLD_OUT) return
 
     setLoading(true)
@@ -80,9 +79,9 @@ export default function TicketsPage() {
               <p className="text-space-blue text-sm font-semibold tracking-widest uppercase mb-2">
                 Get your ticket
               </p>
-              {/* Conditional Title messaging */}
+              
               <h1 className="text-3xl sm:text-4xl font-bold text-white">
-                {IS_SOLD_OUT ? "Tier 1: Sold Out" : "Secure Your Place"}
+                {IS_SOLD_OUT ? "Tier 2: Sold Out" : "Secure Your Place"}
               </h1>
             </div>
 

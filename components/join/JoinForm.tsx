@@ -99,7 +99,7 @@ export default function JoinForm() {
     <div className="rounded-xs border border-white/5 bg-space-navy p-8">
       <form onSubmit={handleSubmit} className="space-y-5">
 
-        {/* Name + Email */}
+        {/* Name and Email */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Full name *</label>
@@ -127,7 +127,7 @@ export default function JoinForm() {
           </div>
         </div>
 
-        {/* Student ID + Year */}
+        {/* Student ID and Year */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Student ID *</label>
@@ -189,7 +189,7 @@ export default function JoinForm() {
           />
         </div>
 
-        {/* Referral */}
+        {/* How did you hear about us? */}
         <div>
           <label className={labelClass}>How did you hear about us?</label>
           <select

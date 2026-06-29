@@ -7,7 +7,6 @@ export default function CommitteeCard({ member }: { member: CommitteeMember }) {
     <div className="group rounded-2xs border border-white/5 bg-space-navy overflow-hidden hover:border-white/15 transition-colors w-full flex flex-col justify-between">
 
       <div className="w-full">
-        {/* Aspect ratio layout */}
         <div className="aspect-square overflow-hidden bg-space-dark relative">
           <img
             src={member.photoUrl}
@@ -16,7 +15,6 @@ export default function CommitteeCard({ member }: { member: CommitteeMember }) {
           />
         </div>
 
-        {/* Compressed text configurations for multi-column phone viewports */}
         <div className="p-3 sm:p-6">
           <p className="text-space-blue text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-1 truncate">
             Lorem Ipsum
@@ -31,7 +29,6 @@ export default function CommitteeCard({ member }: { member: CommitteeMember }) {
         </div>
       </div>
 
-      {/* Touch Target Compliant Links */}
       {(member.linkedinUrl || member.email) && (
         <div className="flex gap-4 p-3 sm:p-6 pt-2 sm:pt-3 border-t border-white/5 mt-auto">
           {member.linkedinUrl && (

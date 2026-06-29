@@ -16,15 +16,12 @@ function SponsorLogo({ name, logoUrl, websiteUrl, tierSize }: {
       href={websiteUrl}
       target="_blank"
       rel="noopener noreferrer"
-      // Increased max-w so the container blocks can physically expand wider for bigger logos
       className="flex items-center justify-center w-full sm:max-w-[320px] transition-all duration-300 hover:scale-[1.03] group"
     >
-      {/* FROSTED GLASS BOX: Shows background color underneath, clear separation for light/dark logos */}
       <div className="flex items-center justify-center p-6 rounded-xs bg-white/10 backdrop-blur-md border border-white/10 group-hover:border-white/20 w-full min-h-[120px] sm:min-h-[140px] shadow-xl shadow-black/30 transition-colors">
         <img 
           src={logoUrl} 
           alt={name} 
-          // Boosted layout footprint with max-h properties
           className={`${tierSize} w-auto object-contain max-w-[85%] max-h-[80px]`} 
         />
       </div>
@@ -58,7 +55,6 @@ export default function SponsorsPage() {
           </p>
         </div>
 
-        {/* Become a sponsor CTA */}
         <div className="mb-16 sm:mb-20 mt-8 sm:mt-10 rounded-xs border border-white/10 bg-space-navy px-6 sm:px-8 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 w-full">
           <div>
             <p className="text-white font-semibold mb-1">Want to support our mission?</p>
@@ -74,7 +70,6 @@ export default function SponsorsPage() {
           </a>
         </div>
 
-        {/* Tiers Matrix Layout */}
         <div className="space-y-16 sm:space-y-20 w-full">
           
           {/* Galaxy Tier */}

@@ -13,7 +13,6 @@ export default function FeaturedEvent({ event }: { event: Event }) {
   return (
     <div className="relative rounded-xs overflow-hidden border border-white/10 w-full mx-auto flex flex-col bg-space-navy shadow-2xl shadow-black/40">
       
-      {/* Fixed Widescreen Cinematic Image Viewport */}
       <div className="relative overflow-hidden w-full bg-black/40 aspect-video md:aspect-[21/9]">
         <img
           src={event.imageUrl}
@@ -22,7 +21,6 @@ export default function FeaturedEvent({ event }: { event: Event }) {
         />
       </div>
 
-      {/* Pure Content Info Block */}
       <div className="p-5 sm:p-6 w-full bg-space-navy flex flex-col flex-grow">
         <div className="flex flex-wrap gap-1.5 mb-2">
           {event.tags?.map((tag: string) => (
@@ -43,7 +41,7 @@ export default function FeaturedEvent({ event }: { event: Event }) {
           {event.title} 
         </h3>
 
-        {/* Prominent Location Block */}
+        {/* Location */}
         {event.location && (
           <div className="flex items-start gap-1.5 text-white/80 font-medium text-xs sm:text-sm mt-1 mb-3 bg-white/5 border border-white/5 p-2.5 rounded-xs">
             <span className="text-space-blue flex-shrink-0">📍</span>

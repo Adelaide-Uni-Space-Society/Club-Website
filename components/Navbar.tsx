@@ -104,7 +104,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile hamburger - Enhanced touch boundaries */}
         <button
           className="md:hidden text-white/60 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-end"
           onClick={() => setMobileOpen((o) => !o)}

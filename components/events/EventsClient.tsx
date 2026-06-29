@@ -16,13 +16,12 @@ export default function EventsClient({ upcoming, past }: Omit<Props, "tags">) {
 
   return (
     <div className="w-full px-1 sm:px-0">
-      {/* Upcoming Section Container */}
+      {/* Upcoming Container */}
       {upcoming.length > 0 ? (
         <section className="mb-16 sm:mb-20 w-full">
           <h2 className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-6 sm:mb-8">
             Upcoming Events
           </h2>
-          {/* REMOVED: isTicketsPage prop entirely so it defaults to single-image mode */}
           {featured && <FeaturedEvent event={featured} />}
           
           {rest.length > 0 && (
@@ -37,7 +36,7 @@ export default function EventsClient({ upcoming, past }: Omit<Props, "tags">) {
         <p className="text-white/30 text-sm mb-16 sm:mb-20">No upcoming events at this time.</p>
       )}
 
-      {/* Past Section Container */}
+      {/* Past Container */}
       {past.length > 0 && (
         <section className="w-full">
           <h2 className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-6 sm:mb-8">

@@ -13,7 +13,6 @@ function SponsorLogo({ name, logoUrl, websiteUrl, tierSize }: {
       rel="noopener noreferrer"
       className="flex items-center justify-center w-full sm:max-w-[320px] transition-all duration-300 hover:scale-[1.03] group"
     >
-      {/* Identical Frosted Glass implementation to keep the UI uniform across both views */}
       <div className="flex items-center justify-center p-6 rounded-xs bg-white/10 backdrop-blur-md border border-white/10 group-hover:border-white/20 w-full min-h-[120px] sm:min-h-[140px] shadow-xl shadow-black/30 transition-colors">
         <img 
           src={logoUrl} 

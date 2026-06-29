@@ -43,15 +43,12 @@ export default function EventCard({ event, past = false }: { event: Event; past?
           {formatDate(event.date)}
         </p>
         <h3 className="text-white font-bold text-base leading-snug mb-2">
-          {/* 3. Dynamic Title */}
           {event.title}
         </h3>
         <p className="text-white/40 text-sm leading-relaxed mb-3">
-          {/* 4. Dynamic Description */}
           {event.description}
         </p>
         
-        {/* 5. Optional Location or Meta Info */}
         {event.location && (
           <p className="text-white/20 text-xs">{event.location}</p>
         )}

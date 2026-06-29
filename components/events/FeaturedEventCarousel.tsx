@@ -36,7 +36,7 @@ export default function FeaturedEventCarousel({ event }: { event: CarouselEvent 
   return (
     <div className="relative rounded-xs overflow-hidden border border-white/10 w-full mx-auto flex flex-col bg-space-navy shadow-2xl shadow-black/40 lg:max-w-[420px]">
       
-      {/* Portrait 4:5 Image Container Frame */}
+      {/* 4:5 Image Container */}
       <div className="relative overflow-hidden w-full bg-black/40 aspect-[4/5]">
         <img
           src={images[currentIndex]}
@@ -45,7 +45,6 @@ export default function FeaturedEventCarousel({ event }: { event: CarouselEvent 
         />
       </div>
 
-      {/* External Control Row for Carousel Dots and Arrows */}
       {images.length > 1 && (
         <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-space-navy/50 select-none">
           <button
@@ -82,7 +81,7 @@ export default function FeaturedEventCarousel({ event }: { event: CarouselEvent 
         </div>
       )}
 
-      {/* Info Block */}
+      {/* Info */}
       <div className="p-5 w-full bg-space-navy flex flex-col flex-grow">
         <div className="flex flex-wrap gap-1.5 mb-2">
           {event.tags?.map((tag: string) => (
@@ -103,7 +102,7 @@ export default function FeaturedEventCarousel({ event }: { event: CarouselEvent 
           {event.title} 
         </h3>
 
-        {/* Prominent Location Block */}
+        {/* Location */}
         {event.location && (
           <div className="flex items-start gap-1.5 text-white/80 font-medium text-xs mt-1 mb-3 bg-white/5 border border-white/5 p-2.5 rounded-xs">
             <span className="text-space-blue flex-shrink-0">📍</span>
