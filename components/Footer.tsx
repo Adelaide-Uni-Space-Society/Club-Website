@@ -18,18 +18,16 @@ const iconMap: Record<string, IconType> = {
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-space-navy w-full">
-      {/* Replaced absolute row values with responsive grid switching to stack elements vertically on mobile viewports */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left">
 
         <Link href="/" className="flex-shrink-0 min-h-[44px] flex items-center">
           <img
-            src="/high-def-light-background.svg"
+            src="/AUSS.png"
             alt="Society logo"
             className="h-7 sm:h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
           />
         </Link>
 
-        {/* Dynamic Social Anchors Grid Row */}
         <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
           {socials.map(({ label, href }) => {
             const Icon = iconMap[label]

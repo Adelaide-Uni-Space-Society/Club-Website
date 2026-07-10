@@ -39,7 +39,7 @@ export default function Navbar() {
 
         <Link href="/" className="flex-shrink-0">
           <img
-            src="/high-def-light-background.svg"
+            src="/AUSS.png"
             alt="Society logo"
             className="h-8 sm:h-9 w-auto"
           />

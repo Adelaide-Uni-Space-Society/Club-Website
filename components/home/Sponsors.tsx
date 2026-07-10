@@ -1,4 +1,8 @@
-import { getSponsorsByTier } from "@/lib/data/sponsors"
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { FastAverageColor } from "fast-average-color";
+import { getSponsorsByTier } from "@/lib/data/sponsors";
 
 function SponsorLogo({ name, logoUrl, websiteUrl, tierSize }: {
   name: string
@@ -6,22 +10,60 @@ function SponsorLogo({ name, logoUrl, websiteUrl, tierSize }: {
   websiteUrl: string
   tierSize: string
 }) {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [isDarkLogo, setIsDarkLogo] = useState(false);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (!image) return;
+
+    const fac = new FastAverageColor();
+
+    const handleLoad = async () => {
+      try {
+        const color = await fac.getColorAsync(image);
+        setIsDarkLogo(color.isDark);
+      } catch (err) {
+        console.error("Failed to analyze image color matrix:", err);
+      }
+    };
+
+    if (image.complete) {
+      handleLoad();
+    } else {
+      image.addEventListener("load", handleLoad);
+    }
+
+    return () => {
+      image.removeEventListener("load", handleLoad);
+      fac.destroy();
+    };
+  }, [logoUrl]);
+
   return (
     <a
       href={websiteUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-center w-full sm:max-w-[320px] transition-all duration-300 hover:scale-[1.03] group"
+      className="flex items-center justify-center w-full sm:w-[280px] shrink-0 transition-all duration-300 hover:scale-[1.03] group"
     >
-      <div className="flex items-center justify-center p-6 rounded-xs bg-white/10 backdrop-blur-md border border-white/10 group-hover:border-white/20 w-full min-h-[120px] sm:min-h-[140px] shadow-xl shadow-black/30 transition-colors">
+      <div 
+        className={`flex items-center justify-center p-6 rounded-xs w-full min-h-[120px] sm:min-h-[140px] shadow-xl shadow-black/30 transition-all duration-300 ${
+          isDarkLogo 
+            ? "bg-white/95 border border-white/20 text-black shadow-lg shadow-white/5" 
+            : "bg-black border-4 border-white text-white hover:bg-white/5 shadow-xl shadow-black/40"
+        }`}
+      >
         <img 
+          ref={imageRef}
           src={logoUrl} 
           alt={name} 
-          className={`${tierSize} w-auto object-contain max-w-[85%] max-h-[80px]`} 
+          crossOrigin="anonymous"
+          className="w-full h-full max-h-[70px] object-contain object-center transition-all duration-300" 
         />
       </div>
     </a>
-  )
+  );
 }
 
 export default function Sponsors() {
@@ -30,6 +72,9 @@ export default function Sponsors() {
   const milkyWay  = getSponsorsByTier("milky way")
   const nebula    = getSponsorsByTier("nebula")
   const eclipse   = getSponsorsByTier("eclipse")
+
+  // Common typography layout classes for maximum visibility text weights
+  const tierHeadingClass = "text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-6 sm:mb-8 text-white drop-shadow-sm"
 
   return (
     <section className="bg-space-dark py-16 sm:py-24 px-4 sm:px-6">
@@ -45,10 +90,10 @@ export default function Sponsors() {
 
         {/* Galaxy */}
         {galaxy.length > 0 && (
-          <div className="mb-14 sm:mb-16 w-full">
-            <p className="text-purple-400 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6 font-bold">
+          <div className="mb-16 sm:mb-20 w-full">
+            <h3 className={`${tierHeadingClass} text-purple-400 font-black tracking-wide uppercase text-sm sm:text-base`}>
               Galaxy
-            </p>
+            </h3>
             <div className="flex flex-wrap items-center justify-center gap-4 max-w-4xl mx-auto">
               {galaxy.map((s) => (
                 <SponsorLogo key={s.id} {...s} tierSize="h-16 sm:h-20" />
@@ -59,10 +104,10 @@ export default function Sponsors() {
 
         {/* Supernova */}
         {supernova.length > 0 && (
-          <div className="mb-14 sm:mb-16 w-full">
-            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+          <div className="mb-16 sm:mb-20 w-full">
+            <h3 className={tierHeadingClass}>
               Supernova
-            </p>
+            </h3>
             <div className="flex flex-wrap items-center justify-center gap-4 max-w-4xl mx-auto">
               {supernova.map((s) => (
                 <SponsorLogo key={s.id} {...s} tierSize="h-12 sm:h-16" />
@@ -73,10 +118,10 @@ export default function Sponsors() {
 
         {/* Milky Way */}
         {milkyWay.length > 0 && (
-          <div className="mb-14 sm:mb-16 w-full">
-            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+          <div className="mb-16 sm:mb-20 w-full">
+            <h3 className={tierHeadingClass}>
               Milky Way
-            </p>
+            </h3>
             <div className="flex flex-wrap items-center justify-center gap-4 max-w-5xl mx-auto w-full">
               {milkyWay.map((s) => (
                 <SponsorLogo key={s.id} {...s} tierSize="h-10 sm:h-12" />
@@ -87,10 +132,10 @@ export default function Sponsors() {
 
         {/* Nebula */}
         {nebula.length > 0 && (
-          <div className="mb-14 sm:mb-16 w-full">
-            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+          <div className="mb-16 sm:mb-20 w-full">
+            <h3 className={tierHeadingClass}>
               Nebula
-            </p>
+            </h3>
             <div className="flex flex-wrap items-center justify-center gap-4 w-full">
               {nebula.map((s) => (
                 <SponsorLogo key={s.id} {...s} tierSize="h-8 sm:h-10" />
@@ -102,9 +147,9 @@ export default function Sponsors() {
         {/* Eclipse */}
         {eclipse.length > 0 && (
           <div className="w-full">
-            <p className="text-white/20 text-xs tracking-widest uppercase text-center mb-5 sm:mb-6">
+            <h3 className={tierHeadingClass}>
               Eclipse
-            </p>
+            </h3>
             <div className="flex flex-wrap items-center justify-center gap-4 w-full">
               {eclipse.map((s) => (
                 <SponsorLogo key={s.id} {...s} tierSize="h-7 sm:h-8" />
