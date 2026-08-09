@@ -4,6 +4,7 @@ export const events: Event[] = [
   // --- upcoming ---
   {
     id: "1",
+    slug: "galaxy-ball-2026",
     title: "Galaxy Ball 2026",
     description: "This year, Galaxy Ball is living up to its name. Join us in a stunning conservatory under the stars for an unforgettable night full of elegance and magic.\nA limited number of Early Bird tickets are available now, so don’t miss your chance to drink wine and dance under the stars 🌌🪐",
     date: "2026-09-05",

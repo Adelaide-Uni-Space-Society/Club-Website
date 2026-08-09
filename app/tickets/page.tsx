@@ -11,13 +11,15 @@ const IS_SOLD_OUT = false
 export default function TicketsPage() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
+  const [dietaries, setDietaries] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
   const featuredEvent = events.find(e => e.id === "1" || e.id === "galaxy-ball-2026")
 
   async function handleCheckout() {
-    if (IS_SOLD_OUT) return
+    // Ensure featuredEvent exists before proceeding
+    if (IS_SOLD_OUT || !featuredEvent) return
 
     setLoading(true)
     setError("")
@@ -26,7 +28,13 @@ export default function TicketsPage() {
       const res = await fetch("/api/tickets/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, quantity: 1 }),
+        body: JSON.stringify({ 
+          name: name.trim(), 
+          email: email.trim(), 
+          quantity: 1, 
+          dietaries: dietaries.trim(),
+          eventId: featuredEvent.slug
+        }),
       })
 
       const data = await res.json()
@@ -102,6 +110,15 @@ export default function TicketsPage() {
                 className={inputClass}
                 disabled={IS_SOLD_OUT} // Disables email entry
               />
+
+              <input
+                type="text"
+                placeholder="Dietary requirements (e.g. None, Vegan, GF) *"
+                value={dietaries}
+                onChange={(e) => setDietaries(e.target.value)}
+                className={inputClass}
+                disabled={IS_SOLD_OUT}
+              />
               
               <div className="pt-1 text-right">
                 <p className="text-[11px] font-mono text-white/30 tracking-wide uppercase">
@@ -114,7 +131,7 @@ export default function TicketsPage() {
               <button
                 onClick={handleCheckout}
                 /* Hard block actions if loading or if sold out flag evaluates true */
-                disabled={IS_SOLD_OUT || loading || !name || !email}
+                disabled={IS_SOLD_OUT || loading || !name.trim() || !email.trim() || !dietaries.trim()}
                 className="w-full py-3 mt-2 rounded-xs text-white font-semibold text-sm transition-colors min-h-[44px] disabled:opacity-40 disabled:cursor-not-allowed bg-space-blue hover:bg-space-blue/80"
               >
                 {IS_SOLD_OUT ? "SOLD OUT" : loading ? "Redirecting..." : "Buy ticket"}

@@ -68,9 +68,13 @@ export async function POST(req: Request) {
       const insertData = {
         stripe_session_id: session.id,
         stripe_payment_intent: session.payment_intent as string,
-        email: session.customer_email ?? "test@stripe-trigger.com",
+        // Checks customer_details if customer_email is undefined on hosted checkout
+        email: session.customer_email ?? session.customer_details?.email ?? "test@stripe-trigger.com",
         name: session.metadata?.name ?? "Test User",
         quantity: parseInt(session.metadata?.quantity ?? "1"),
+        dietaries: session.metadata?.dietaries ?? null,
+        // Reads event_id passed from checkout metadata
+        event_id: session.metadata?.event_id ?? "galaxy-ball-2026",
         amount_cents: session.amount_total!,
         currency: session.currency!,
         status: "paid",
@@ -78,7 +82,7 @@ export async function POST(req: Request) {
 
       console.log("Attempting order insert:", JSON.stringify(insertData))
 
-      // Insert  ticket order
+      // Insert ticket order
       const { error: orderError } = await supabaseServer.from("ticket_orders").insert(insertData)
       if (orderError) throw orderError
 
@@ -94,11 +98,12 @@ export async function POST(req: Request) {
       await supabaseServer.from("payment_logs").insert({
         event_type: "ticket_purchase_completed",
         stripe_session_id: session.id,
-        email: session.customer_email,
+        email: session.customer_email ?? session.customer_details?.email,
         amount_cents: session.amount_total,
         metadata: {
           name: session.metadata?.name,
           quantity: session.metadata?.quantity,
+          event_id: session.metadata?.event_id,
         },
         status: "success",
       })
@@ -106,7 +111,7 @@ export async function POST(req: Request) {
       console.log(JSON.stringify({
         event: "ticket_purchase_completed",
         stripe_session_id: session.id,
-        email: session.customer_email,
+        email: session.customer_email ?? session.customer_details?.email,
         timestamp: new Date().toISOString(),
       }))
 
@@ -124,7 +129,7 @@ export async function POST(req: Request) {
       await supabaseServer.from("payment_logs").insert({
         event_type: "ticket_purchase_failed",
         stripe_session_id: session.id,
-        email: session.customer_email,
+        email: session.customer_email ?? session.customer_details?.email,
         amount_cents: session.amount_total,
         metadata: { error: errorMessage },
         status: "error",
